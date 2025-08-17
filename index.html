@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGNITRONS - Student Startup & Innovation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+        }
+        
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 70%);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff;
+        }
+        
+        .neon-border {
+            box-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, inset 0 0 5px #00f2ff;
+        }
+        
+        .neon-border-hover:hover {
+            box-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff, inset 0 0 10px #00f2ff;
+        }
+        
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3);
+        }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f2ff, transparent);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #00f2ff;
+            box-shadow: 0 0 0 4px rgba(0, 242, 255, 0.2);
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: -18px;
+            top: 15px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #00f2ff, transparent);
+        }
+        
+        .project-card:hover .project-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(0, 242, 255, 0.5);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Cursor Trail -->
+    <div class="cursor-trail" id="cursor-trail"></div>
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-10 h-10 flex items-center justify-center">
+                            <img src="logo without BG.png" alt="Ignitrons Logo" class="w-10 h-10">
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-white orbitron">IGNITRONS</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Home</a>
+                        <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">About</a>
+                        <a href="#events" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Events</a>
+                        <a href="#community" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Community</a>
+                        <a href="#projects" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Projects</a>
+                        <a href="#contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+            <div class="absolute top-0 left-0 w-full h-full opacity-20" id="particles-js"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-20">
+            <div class="w-32 h-32 mx-auto mb-8 flex items-center justify-center animate-spin-slow">
+                <img src="logo without BG.png" alt="Ignitrons Logo" class="mx-auto mb-6 w-100 h-100 logo-glow">
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 orbitron">
+                <span class="block">IGNITE YOUR IDEA.</span>
+                <span class="block">OWN THE STAGE.</span>
+                <span class="block">CHANGE THE GAME.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed neon-text">
+                Where Ideas Ignite and Innovation Takes Flight.<br class="hidden md:block"> Join a movement of creators, innovators, and change-makers.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-bold text-lg hover:from-cyan-600 hover:to-blue-700 transition duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/20">
+                    Join Us
+                </a>
+                <a href="#events" class="px-8 py-4 border-2 border-cyan-400 rounded-full text-cyan-400 font-bold text-lg hover:bg-cyan-400 hover:bg-opacity-10 transition duration-300 transform hover:scale-105">
+                    Explore Events
+                </a>
+            </div>
+            
+            <p class="mt-10 text-lg text-gray-400 italic">
+                "Your next big breakthrough starts here. Be part of a community where ideas don't just survive — they thrive."
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-black to-gray-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 orbitron neon-text">ABOUT IGNITRONS</h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <div class="glass-card p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-white mb-4 orbitron">Our Mission</h3>
+                    <p class="text-gray-300 mb-6">
+                        To turn sparks of inspiration into flames of innovation — by empowering creators, connecting brilliant minds, and giving every idea the stage it deserves.
+                    </p>
+                    <h3 class="text-2xl font-bold text-white mb-4 orbitron">Our Vision</h3>
+                    <p class="text-gray-300">
+                        A future where no great idea is left unseen, unheard, or unbuilt — where every innovator, regardless of background, has the power and platform to make an impact.
+                    </p>
+                </div>
+                
+                <div class="glass-card p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-white mb-6 orbitron">The Challenge</h3>
+                    <p class="text-gray-300 mb-6">
+                        Every day, thousands of world-changing ideas fade away — not because they aren't brilliant, but because their creators face invisible walls.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-cyan-400 mr-2">•</span>
+                            <span class="text-gray-300">No Access to the Right People</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cyan-400 mr-2">•</span>
+                            <span class="text-gray-300">Scattered Communities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cyan-400 mr-2">•</span>
+                            <span class="text-gray-300">Overwhelming Tech Landscape</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-cyan-400 mr-2">•</span>
+                            <span class="text-gray-300">Low Visibility for Projects</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="glass-card p-8 rounded-xl mb-16">
+                <h3 class="text-2xl font-bold text-white mb-6 orbitron">Our Answer</h3>
+                <p class="text-gray-300 mb-8">
+                    Ignitrons exists to break those walls. We're building a living, breathing ecosystem where innovators can learn fearlessly, build together, connect deeply, and shine brightly.
+                </p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-graduation-cap text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Learn Fearlessly</h4>
+                        <p class="text-gray-400 text-sm">
+                            Through immersive workshops, hands-on challenges, and real-world mentorship.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-code text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Build Together</h4>
+                        <p class="text-gray-400 text-sm">
+                            In hackathons and collaborative programs to turn concepts into tangible products.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-users text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Connect Deeply</h4>
+                        <p class="text-gray-400 text-sm">
+                            With a global network of creators, investors, and industry leaders.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-star text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Shine Brightly</h4>
+                        <p class="text-gray-400 text-sm">
+                            By showcasing your work to audiences that matter.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card p-8 rounded-xl">
+                <h3 class="text-2xl font-bold text-white mb-6 orbitron">Core Values</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-800 bg-opacity-50 p-5 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-lg font-bold text-white mb-2">Fearless Innovation</h4>
+                        <p class="text-gray-400 text-sm">
+                            We believe in chasing the "impossible" until it's possible.
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 bg-opacity-50 p-5 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-lg font-bold text-white mb-2">Power of Unity</h4>
+                        <p class="text-gray-400 text-sm">
+                            Collaboration fuels breakthroughs; competition fuels motivation.
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 bg-opacity-50 p-5 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-lg font-bold text-white mb-2">All Voices Matter</h4>
+                        <p class="text-gray-400 text-sm">
+                            Diversity is our strength; inclusion is our foundation.
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 bg-opacity-50 p-5 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-lg font-bold text-white mb-2">Learn by Building</h4>
+                        <p class="text-gray-400 text-sm">
+                            Theory inspires, but action transforms.
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 bg-opacity-50 p-5 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-lg font-bold text-white mb-2">Impact Above All</h4>
+                        <p class="text-gray-400 text-sm">
+                            We measure success by the change we create in the real world.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-cyan-400 mb-2 orbitron" id="projects-count">3+</div>
+                    <div class="text-gray-400 uppercase text-sm tracking-wider">Projects Done</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-cyan-400 mb-2 orbitron" id="students-count">10+</div>
+                    <div class="text-gray-400 uppercase text-sm tracking-wider">Students Onboarded</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-cyan-400 mb-2 orbitron" id="mentors-count">1</div>
+                    <div class="text-gray-400 uppercase text-sm tracking-wider">Mentors</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-cyan-400 mb-2 orbitron" id="events-count">3+</div>
+                    <div class="text-gray-400 uppercase text-sm tracking-wider">Events Hosted</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 orbitron neon-text">OUR EVENTS</h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto"></div>
+                <p class="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
+                    Feel the Energy. Join the Movement. Events That Ignite Your Potential.
+                </p>
+            </div>
+            
+            <div class="mb-20">
+                <h3 class="text-2xl font-bold text-white mb-8 orbitron flex items-center">
+                    <span class="w-8 h-8 bg-cyan-400 rounded-full flex items-center justify-center mr-3">!</span>
+                    Upcoming Events
+                </h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-xl overflow-hidden transition duration-300 hover:shadow-lg hover:shadow-cyan-500/20 card-hover">
+                        <div class="h-48 bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-white">Hack the Future</h4>
+                                <span class="bg-cyan-400 bg-opacity-20 text-cyan-400 text-xs px-3 py-1 rounded-full">January 2026</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">
+                                A 48-hour hackathon focused on solving real-world problems with innovative tech solutions.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <div class="text-sm text-cyan-400">
+                                    <i class="fas fa-users mr-1"></i> Limited Seats
+                                </div>
+                                <a href="#" class="text-cyan-400 hover:text-white font-medium text-sm">
+                                    Register Now <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-xl overflow-hidden transition duration-300 hover:shadow-lg hover:shadow-cyan-500/20 card-hover">
+                        <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
+                            <i class="fas fa-chalkboard-teacher text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-white">AI Masterclass</h4>
+                                <span class="bg-cyan-400 bg-opacity-20 text-cyan-400 text-xs px-3 py-1 rounded-full">September 2025</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">
+                                Learn hands-on from experts about the latest AI tools, technologies, and strategies.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <div class="text-sm text-cyan-400">
+                                    <i class="fas fa-users mr-1"></i> 50 Seats
+                                </div>
+                                <a href="#" class="text-cyan-400 hover:text-white font-medium text-sm">
+                                    Register Now <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-xl overflow-hidden transition duration-300 hover:shadow-lg hover:shadow-cyan-500/20 card-hover">
+                        <div class="h-48 bg-gradient-to-r from-yellow-500 to-orange-600 flex items-center justify-center">
+                            <i class="fas fa-network-wired text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-white">Founders Meetup</h4>
+                                <span class="bg-cyan-400 bg-opacity-20 text-cyan-400 text-xs px-3 py-1 rounded-full">October 2025</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">
+                                Network with fellow innovators, share ideas, and explore collaboration opportunities.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <div class="text-sm text-cyan-400">
+                                    <i class="fas fa-users mr-1"></i> 30 Seats
+                                </div>
+                                <a href="#" class="text-cyan-400 hover:text-white font-medium text-sm">
+                                    Register Now <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-divider my-12"></div>
+            
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-8 orbitron flex items-center">
+                    <span class="w-8 h-8 bg-cyan-400 rounded-full flex items-center justify-center mr-3">✓</span>
+                    Past Events
+                </h3>
+                
+                <div class="relative">
+                    <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-transparent ml-4 md:ml-6"></div>
+                    
+                    <div class="space-y-8 pl-8 md:pl-12">
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-0 w-4 h-4 bg-cyan-400 rounded-full"></div>
+                            <div class="glass-card p-6 rounded-lg">
+                                <h4 class="text-xl font-bold text-white mb-2">IGNITRONS BuildFest</h4>
+                                <div class="text-cyan-400 text-sm mb-3">August 13, 2025</div>
+                                <p class="text-gray-400">
+                                    A One Day intensive workshop on to change Ideas in Products.
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Ideation</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Pitching</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Smart Contracts</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-0 w-4 h-4 bg-cyan-400 rounded-full"></div>
+                            <div class="glass-card p-6 rounded-lg">
+                                <h4 class="text-xl font-bold text-white mb-2">Tech for Good Hackathon</h4>
+                                <div class="text-cyan-400 text-sm mb-3">July 25, 2025</div>
+                                <p class="text-gray-400">
+                                    24-hour hackathon focused on creating tech solutions for social and environmental challenges.
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">React</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Node.js</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">AI</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-0 w-4 h-4 bg-cyan-400 rounded-full"></div>
+                            <div class="glass-card p-6 rounded-lg">
+                                <h4 class="text-xl font-bold text-white mb-2">Hands on AI</h4>
+                                <div class="text-cyan-400 text-sm mb-3">August 3, 2025</div>
+                                <p class="text-gray-400">
+                                    An evening where students learn about how to use AI properly and how to make projects with them.
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Tools</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">VC</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">AI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 orbitron neon-text">OUR COMMUNITY</h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto"></div>
+                <p class="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
+                    A family of innovators, creators, and problem-solvers who share one mission — to spark change through collaboration and technology.
+                </p>
+            </div>
+            
+            <div class="glass-card p-8 rounded-xl mb-12">
+                <h3 class="text-2xl font-bold text-white mb-6 orbitron">How We Work as a Community</h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-hands-helping text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">We Support</h4>
+                        <p class="text-gray-400 text-sm">
+                            From mentoring new members to cheering each other on during hackathons, no one is left behind.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-lightbulb text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">We Create</h4>
+                        <p class="text-gray-400 text-sm">
+                            Transforming raw ideas into working solutions through collaboration and creativity.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-globe text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">We Connect</h4>
+                        <p class="text-gray-400 text-sm">
+                            Building bridges between students, professionals, startups, and organizations.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-book text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">We Share Knowledge</h4>
+                        <p class="text-gray-400 text-sm">
+                            Hosting skill sessions, project reviews, and open discussions for collective growth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card p-8 rounded-xl mb-12">
+                <h3 class="text-2xl font-bold text-white mb-6 orbitron">Why Our Community Matters</h3>
+                <p class="text-gray-300 mb-8">
+                    In a world where individual effort can feel small, a united community becomes unstoppable. At Ignitrons, we combine our skills, resources, and passion to create opportunities for everyone — no matter their starting point. Whether you want to learn, lead, or launch your own initiative, you'll find the support, tools, and network to make it happen here.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-4 orbitron">Be Part of the Change</h4>
+                        <div class="space-y-4">
+                            <a href="#" class="flex items-center text-cyan-400 hover:text-white transition duration-300">
+                                <div class="w-10 h-10 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <span>Sign Up Today — Become a member and start your journey with Ignitrons.</span>
+                            </a>
+                            <a href="#" class="flex items-center text-cyan-400 hover:text-white transition duration-300">
+                                <div class="w-10 h-10 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </div>
+                                <span>Log In — Stay updated, collaborate, and contribute to ongoing projects.</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold text-white mb-4 orbitron">Community Testimonials</h4>
+                        <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border-l-4 border-cyan-400">
+                            <p class="text-gray-300 italic mb-4">
+                                "Ignitrons gave me the confidence to turn my idea into a real product. The support from the community was incredible!"
+                            </p>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-gray-700 mr-3"></div>
+                                <div>
+                                    <div class="text-white font-medium">Tanmay.</div>
+                                    <div class="text-gray-400 text-sm">Founder, ResQRoute</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 orbitron neon-text">OUR PROJECTS</h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto"></div>
+                <p class="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
+                    See what our community has built together. Every project starts as an idea and grows through collaboration.
+                </p>
+            </div>
+            
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-white mb-6 orbitron">Project Gallery</h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card rounded-lg overflow-hidden relative group project-card">
+                        <div class="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
+                            <i class="fas fa-leaf text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-white text-center mb-2">ResQRoute</h4>
+                            <div class="flex justify-center mb-3">
+                                <span class="bg-green-500 bg-opacity-20 text-green-400 text-xs px-3 py-1 rounded-full">Presented</span>
+                            </div>
+                            <a href="#" class="text-cyan-400 text-sm flex items-center justify-center">
+                                <i class="fas fa-certificate mr-1"></i> View Certificate
+                            </a>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300 project-info transform translate-y-4">
+                            <div class="p-6 text-center">
+                                <p class="text-gray-300 mb-4">
+                                    ResQRoute is built to prioritize emergency vehicles like ambulances, fire trucks, and police cars by simulating intelligent traffic management.
+                                </p>
+                                <div class="flex flex-wrap justify-center gap-2">
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Python</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">MySQL</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg overflow-hidden relative group project-card">
+                        <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-white text-center mb-2">Calmora</h4>
+                            <div class="flex justify-center mb-3">
+                                <span class="bg-blue-500 bg-opacity-20 text-blue-400 text-xs px-3 py-1 rounded-full">Published</span>
+                            </div>
+                            <a href="#" class="text-cyan-400 text-sm flex items-center justify-center">
+                                <i class="fas fa-certificate mr-1"></i> View Certificate
+                            </a>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300 project-info transform translate-y-4">
+                            <div class="p-6 text-center">
+                                <p class="text-gray-300 mb-4">
+                                    A chatbox offering a safe space for users to share feelings and receive emotional validation.
+                                </p>
+                                <div class="flex flex-wrap justify-center gap-2">
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Python</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">TensorFlow</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Flask</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg overflow-hidden relative group project-card">
+                        <div class="h-48 bg-gradient-to-r from-yellow-500 to-orange-600 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-white text-center mb-2">Interesta</h4>
+                            <div class="flex justify-center mb-3">
+                                <span class="bg-blue-500 bg-opacity-20 text-blue-400 text-xs px-3 py-1 rounded-full">Published</span>
+                            </div>
+                            <a href="#" class="text-cyan-400 text-sm flex items-center justify-center">
+                                <i class="fas fa-certificate mr-1"></i> View Certificate
+                            </a>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300 project-info transform translate-y-4">
+                            <div class="p-6 text-center">
+                                <p class="text-gray-300 mb-4">
+                                    It is an online platform where you can discover various interests, collaborations, and even people, across various domains and specified interests.
+                                </p>
+                                <div class="flex flex-wrap justify-center gap-2">
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Vue.js</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">Firebase</span>
+                                    <span class="bg-gray-800 text-cyan-400 text-xs px-3 py-1 rounded-full">AI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>   <!-- closes the grid -->
+            </section>   <!-- closes Project Gallery -->
+
+            
+            <div class="glass-card p-8 rounded-xl">
+                <h3 class="text-2xl font-bold text-white mb-6 orbitron">Certificates & Recognition</h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition duration-300">
+                        <div class="h-32 bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center mb-4">
+                            <i class="fas fa-award text-white text-4xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">HackStasy 2025</h4>
+                        <p class="text-gray-400 text-sm mb-3">
+                            Awarded to ResQRoute at the Microsoft Office for Good Hackathon
+                        </p>
+                        <a href="#" class="text-cyan-400 text-sm font-medium">
+                            View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 orbitron neon-text">GET IN TOUCH</h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto"></div>
+                <p class="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
+                    We believe every great idea starts with a conversation. Reach out to us for collaborations, questions, or just to say hello!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="glass-card p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-white mb-6 orbitron">Contact Form</h3>
+                    
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-300 text-sm font-medium mb-2">Your full name</label>
+                            <input type="text" id="name" ... required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-300 text-sm font-medium mb-2">Email address</label>
+                            <input type="email" id="email" ... required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" ... required rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white" placeholder="Tell us how we can help"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-white font-bold text-lg hover:from-cyan-600 hover:to-blue-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="glass-card p-8 rounded-xl mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-6 orbitron">Connect With Us</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-cyan-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Email</h4>
+                                    <a href="mailto:contact@ignitrons.com" class="text-cyan-400 hover:text-white transition duration-300">teamignitrons@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-globe text-cyan-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Website</h4>
+                                    <a href="https://ignitrons.com" class="text-cyan-400 hover:text-white transition duration-300">ignitrons.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fab fa-instagram text-cyan-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Instagram</h4>
+                                    <a href="https://www.instagram.com/ignitrons_official" class="text-cyan-400 hover:text-white transition duration-300">@ignitrons_official</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fab fa-linkedin text-cyan-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">LinkedIn</h4>
+                                    <a href="https://www.linkedin.com/company/108631067/admin/dashboard/" class="text-cyan-400 hover:text-white transition duration-300">IGNITRONS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-white mb-4 orbitron">Our Promise</h3>
+                        <p class="text-gray-300 mb-6">
+                            We're more than just a tech community — we're a space where innovators, designers, developers, and dreamers come together to build, learn, and grow. No matter where you are in your journey, Ignitrons is here to connect, guide, and collaborate with you.
+                        </p>
+                        <div class="w-full h-48 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-rocket text-white text-2xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white orbitron">Ready to Begin?</h4>
+                                <a href="#" class="text-white hover:text-cyan-200 transition duration-300">Join Ignitrons Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <img src="logo without BG.png" alt="Ignitrons Logo" class="w-10 h-10">
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-white orbitron">IGNITRONS</span>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    &copy; 2025 IGNITRONS. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="fixed bottom-6 right-6 w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-cyan-600 transition duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        // Static counters - no animation needed
+        function animateCounters() {
+            // Counters are now static with + signs
+        }
+        
+        // Initialize particles.js
+        function initParticles() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#00f2ff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#00f2ff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+        
+        // Custom cursor trail
+        function initCursorTrail() {
+            const cursor = document.getElementById('cursor-trail');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            initParticles();
+            initCursorTrail();
+            initSmoothScroll();
+            
+            // Add animation class to elements when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.glass-card, .project-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+<script type="module" src="./contact.js"></script>
+</body>
+</html>
