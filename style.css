@@ -26,3 +26,8 @@ p {
 .card p:last-child {
 	margin-bottom: 0;
 }
+
+.overlay {
+  pointer-events: none; /* prevents blocking links */
+}
+
