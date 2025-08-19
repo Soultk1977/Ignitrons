@@ -90,6 +90,11 @@
             mix-blend-mode: screen;
             z-index: 9999;
             transform: translate(-50%, -50%);
+        .auth-modal { position: fixed; inset: 0; z-index: 80; display:flex; align-items:center; justify-content:center; }
+        .auth-modal.hidden { display:none; }
+        .auth-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+        .auth-content { position:relative; z-index:90; width:95%; max-width:480px; border-radius:12px; box-shadow:0 20px 50px rgba(0,0,0,0.6); }
+        .auth-close { position:absolute; top:10px; right:12px; background:transparent; border:0; color:#fff; font-size:26px; cursor:pointer; }
         }
     </style>
 </head>
@@ -545,18 +550,18 @@
                     <div>
                         <h4 class="text-lg font-bold text-white mb-4 orbitron">Be Part of the Change</h4>
                         <div class="space-y-4">
-                            <a href="#contact" class="flex items-center text-cyan-400 hover:text-white transition duration-300">
+                            <button type="button" id="open-signup" class="flex items-center text-cyan-400 hover:text-white transition duration-300">
                                 <div class="w-10 h-10 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
                                     <i class="fas fa-user-plus"></i>
                                 </div>
-                                <span>Sign Up Today — Become a member and start your journey with Ignitrons.</span>
-                            </a>
-                            <a href="#contact" class="flex items-center text-cyan-400 hover:text-white transition duration-300">
+                               <span>Sign Up Today — Become a member and start your journey with Ignitrons.</span>
+                            </button>
+                            <button type="button" id="open-login" class="flex items-center text-cyan-400 hover:text-white transition duration-300">
                                 <div class="w-10 h-10 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
                                     <i class="fas fa-sign-in-alt"></i>
                                 </div>
                                 <span>Log In — Stay updated, collaborate, and contribute to ongoing projects.</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     
@@ -836,6 +841,111 @@
             </div>
         </div>
     </footer>
+  <!-- AUTH MODALS: SignUp / Login / Forgot / OTP -->
+<!-- Sign Up Modal -->
+<div id="auth-signup-modal" class="auth-modal hidden" aria-hidden="true" role="dialog">
+  <div class="auth-backdrop"></div>
+  <div class="auth-content glass-card p-6 rounded-lg max-w-md mx-auto">
+    <button class="auth-close" data-modal="auth-signup-modal" aria-label="Close">&times;</button>
+    <h3 class="text-2xl font-bold text-white orbitron mb-4">Create an account</h3>
+    <p class="text-gray-400 mb-4">Enter your full name, email and choose a password. We'll send a one-time code (OTP) to confirm your email.</p>
+
+    <form id="signup-form" class="space-y-4">
+      <div>
+        <label class="text-gray-300 text-sm">Full name</label>
+        <input id="signup-fullname" type="text" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="Your full name">
+      </div>
+      <div>
+        <label class="text-gray-300 text-sm">Email</label>
+        <input id="signup-email" type="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="your@domain.com">
+      </div>
+      <div>
+        <label class="text-gray-300 text-sm">Password</label>
+        <input id="signup-password" type="password" required minlength="8" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="Choose a secure password">
+      </div>
+
+      <div id="signup-msg" class="text-sm text-gray-300"></div>
+
+      <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-white font-bold">Create account</button>
+    </form>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div id="auth-login-modal" class="auth-modal hidden" aria-hidden="true" role="dialog">
+  <div class="auth-backdrop"></div>
+  <div class="auth-content glass-card p-6 rounded-lg max-w-md mx-auto">
+    <button class="auth-close" data-modal="auth-login-modal" aria-label="Close">&times;</button>
+    <h3 class="text-2xl font-bold text-white orbitron mb-4">Welcome back</h3>
+    <p class="text-gray-400 mb-4">Sign in with your email and password.</p>
+
+    <form id="login-form" class="space-y-4">
+      <div>
+        <label class="text-gray-300 text-sm">Email</label>
+        <input id="login-email" type="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="your@domain.com">
+      </div>
+      <div>
+        <label class="text-gray-300 text-sm">Password</label>
+        <input id="login-password" type="password" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="Your password">
+      </div>
+
+      <div class="flex justify-between items-center">
+        <a href="#" id="open-forgot" class="text-cyan-400 text-sm">Forgot password?</a>
+        <div id="login-msg" class="text-sm text-gray-300"></div>
+      </div>
+
+      <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-white font-bold">Sign in</button>
+    </form>
+  </div>
+</div>
+
+<!-- Forgot password Modal -->
+<div id="auth-forgot-modal" class="auth-modal hidden" aria-hidden="true" role="dialog">
+  <div class="auth-backdrop"></div>
+  <div class="auth-content glass-card p-6 rounded-lg max-w-md mx-auto">
+    <button class="auth-close" data-modal="auth-forgot-modal" aria-label="Close">&times;</button>
+    <h3 class="text-2xl font-bold text-white orbitron mb-4">Reset password</h3>
+    <p class="text-gray-400 mb-4">Enter your account email and we'll send a one-time code (OTP) to reset your password.</p>
+
+    <form id="forgot-form" class="space-y-4">
+      <div>
+        <label class="text-gray-300 text-sm">Email</label>
+        <input id="forgot-email" type="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="your@domain.com">
+      </div>
+
+      <div id="forgot-msg" class="text-sm text-gray-300"></div>
+
+      <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-white font-bold">Send reset code</button>
+    </form>
+  </div>
+</div>
+
+<!-- OTP / Verify Modal (used for signup + recovery) -->
+<div id="auth-otp-modal" class="auth-modal hidden" aria-hidden="true" role="dialog">
+  <div class="auth-backdrop"></div>
+  <div class="auth-content glass-card p-6 rounded-lg max-w-md mx-auto">
+    <button class="auth-close" data-modal="auth-otp-modal" aria-label="Close">&times;</button>
+    <h3 class="text-2xl font-bold text-white orbitron mb-4">Enter verification code</h3>
+    <p class="text-gray-400 mb-4" id="otp-purpose-text">Check your email for the 6-digit code.</p>
+
+    <form id="otp-form" class="space-y-4">
+      <div>
+        <label class="text-gray-300 text-sm">6-digit code</label>
+        <input id="otp-code" type="text" inputmode="numeric" pattern="[0-9]{4,8}" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="123456">
+      </div>
+
+      <!-- on recovery flow we will show new-password -->
+      <div id="otp-newpass-container" style="display:none;">
+        <label class="text-gray-300 text-sm">New password</label>
+        <input id="otp-new-password" type="password" minlength="8" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white" placeholder="Enter new password">
+      </div>
+
+      <div id="otp-msg" class="text-sm text-gray-300"></div>
+
+      <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-white font-bold">Verify</button>
+    </form>
+  </div>
+</div>
 
     <!-- Back to Top Button -->
     <a href="#home" class="fixed bottom-6 right-6 w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-cyan-600 transition duration-300">
@@ -1011,7 +1121,9 @@
             });
         });
     </script>
+<script type="module" src="./auth.js"></script>
 <script type="module" src="./contact.js"></script>
+  
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const btn = document.querySelector('nav .md\\:hidden button');
